@@ -1,23 +1,35 @@
-#include <stdio.h>
-#include <math.h>
-#include <ctype.h>
+#include <stdio.h> // Include the standard input/output header file.
 
-void main(){
-    int n,c;
-    scanf("%d", &n);
-    for(int i = 0; i<n+1; i++){
-        for(int j = 0; j<=(n-i-1); j++){
-            printf(" ");
-        }
-        for(int l = 0; l<((i*2-1)/2)+1; l++){
-            printf("%c ", l+65);
-            c = l+65;
+void main() 
+{
+   int i, j; // Declare variables for iteration.
+   char alph = 'A'; // Initialize a character variable to 'A'.
+   int n, blk; // Declare variables for user input and block counter.
+   int ctr = 1; // Initialize a counter.
 
-        }
-        for(int l = 1; l<=((i*2-1)/2); l++){
-            printf("%c ", c-l);
-        }
-        printf("\n");
-    }
-    
+   printf("Input the number of Letters (less than 26) in the Pyramid : ");
+   scanf("%d", &n); // Prompt user for input and store it in variable 'n'.
+
+   for (i = 1; i <= n; i++) // Outer loop for rows.
+   {
+       for(blk = 1; blk <= n - i; blk++) // Loop to print spaces before letters.
+           printf("  ");
+
+       for (j = 0; j <= (ctr / 2); j++) // Loop to print letters in ascending order.
+       {
+           printf("%c ", alph++);
+       }
+
+       alph = alph - 2; // Decrement the character after printing half.
+
+       for (j = 0; j < (ctr / 2); j++) // Loop to print letters in descending order.
+       {
+           printf("%c ", alph--);
+       }
+
+       ctr = ctr + 2; // Increment the counter for the next row.
+       alph = 'A'; // Reset the character to 'A' for the next row.
+
+       printf("\n"); // Move to the next line after printing a row.
+   }
 }
