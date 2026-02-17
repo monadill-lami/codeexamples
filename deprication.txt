@@ -1,0 +1,1 @@
+  Depreciation = (Purchase Price - Salvage Value) / Years of Service
